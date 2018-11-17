@@ -26,7 +26,13 @@ const startServer = () => {
       }),
     );
 
-    server.applyMiddleware({ app }); // app is from an existing express app
+    server.applyMiddleware({
+      app,
+      cors: {
+        credentials: true,
+        origin: 'http://localhost:3000',
+      },
+    }); // app is from an existing express app
 
     app.listen({ port: PORT }, () =>
       // tslint:disable-next-line
